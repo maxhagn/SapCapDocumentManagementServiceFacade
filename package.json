@@ -1,77 +1,77 @@
 {
-  "name": "SapCapDocumentManagementServiceFacade",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@cap-js/postgres": "^1.10.4",
-    "@sap-cloud-sdk/generator": "^3.22.2",
-    "@sap-cloud-sdk/http-client": "^3.22.2",
-    "@sap-cloud-sdk/resilience": "^3.22.2",
-    "@cap-js/sdm": "^1.2.2",
-    "@sap/cds": "^8",
-    "express": "^4"
-  },
-  "devDependencies": {
-    "@cap-js/cds-types": "^0.7.0",
-    "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^8",
-    "prettier": "3.3.3",
-    "rimraf": "^5.0.10"
-  },
-  "scripts": {
-    "start": "cds run",
-    "debug-in-memory": "cds watch --with-mocks --in-memory",
-    "hybrid-in-memory": "cds watch --with-mocks --in-memory --profile hybrid",
-    "debug": "npx --node-options=\"--inspect=0.0.0.0:9229\" cds run",
-    "format": "prettier --write .",
-    "cleanup": "rimraf resources gen mta_archives",
-    "build": "cds build --production",
-    "deploy": "npm run cleanup && mbt build -t gen --mtar mta.tar && cf deploy gen/mta.tar"
-  },
-  "cds": {
-    "requires": {
-      "cors": {
-        "credentials": true,
-        "origin": "*"
-      },
-      "db": {
-          "[development]": {
-              "kind": "postgres",
-              "impl": "@cap-js/postgres",
-              "credentials": {
-                  "host": "localhost",
-                  "port": 5432,
-                  "user": "postgres",
-                  "password": "postgres",
-                  "database": "postgres"
-              }
-          },
-          "[hybrid]": {
-              "kind": "postgres",
-              "impl": "@cap-js/postgres",
-              "credentials": {
-                  "host": "localhost",
-                  "port": 5432,
-                  "user": "postgres",
-                  "password": "postgres",
-                  "database": "postgres"
-              }
-          },
-          "[production]": {
-              "kind": "postgres",
-              "impl": "@cap-js/postgres",
-              "requestTimeout": 30000,
-              "connectionTimeoutMillis": 2000
-          }
-      },
-      "sdm": {
-        "settings": {
-          "repositoryId": "1"
+    "name": "SapCapDocumentManagementServiceFacade",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@cap-js/postgres": "^1.10.4",
+        "@sap-cloud-sdk/generator": "^3.22.2",
+        "@sap-cloud-sdk/http-client": "^3.22.2",
+        "@sap-cloud-sdk/resilience": "^3.22.2",
+        "@cap-js/sdm": "^1.2.2",
+        "@sap/cds": "^8",
+        "express": "^4"
+    },
+    "devDependencies": {
+        "@cap-js/cds-types": "^0.7.0",
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^8",
+        "prettier": "3.3.3",
+        "rimraf": "^5.0.10"
+    },
+    "scripts": {
+        "start": "cds run",
+        "debug-in-memory": "cds watch --with-mocks --in-memory",
+        "hybrid-in-memory": "cds watch --with-mocks --in-memory --profile hybrid",
+        "debug": "npx --node-options=\"--inspect=0.0.0.0:9229\" cds run",
+        "format": "prettier --write .",
+        "cleanup": "rimraf resources gen mta_archives",
+        "build": "cds build --production",
+        "deploy": "npm run cleanup && mbt build -t gen --mtar mta.tar && cf deploy gen/mta.tar"
+    },
+    "cds": {
+        "requires": {
+            "cors": {
+                "credentials": true,
+                "origin": "*"
+            },
+            "db": {
+                "[development]": {
+                    "kind": "postgres",
+                    "impl": "@cap-js/postgres",
+                    "credentials": {
+                        "host": "localhost",
+                        "port": 5432,
+                        "user": "postgres",
+                        "password": "postgres",
+                        "database": "postgres"
+                    }
+                },
+                "[hybrid]": {
+                    "kind": "postgres",
+                    "impl": "@cap-js/postgres",
+                    "credentials": {
+                        "host": "localhost",
+                        "port": 5432,
+                        "user": "postgres",
+                        "password": "postgres",
+                        "database": "postgres"
+                    }
+                },
+                "[production]": {
+                    "kind": "postgres",
+                    "impl": "@cap-js/postgres",
+                    "requestTimeout": 30000,
+                    "connectionTimeoutMillis": 2000
+                }
+            },
+            "sdm": {
+                "settings": {
+                    "repositoryId": "1"
+                }
+            }
         }
-      }
     }
-  }
 }
