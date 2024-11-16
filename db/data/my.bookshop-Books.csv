@@ -1,3 +1,3 @@
-ID,title,stock
-1,Wuthering Heights,100
-2,Jane Eyre,500
+ID,title,stock,createdAt,createdBy,modifiedAt,modifiedBy
+8f9f7398-4466-4826-b7cf-c0b1354d2371,Wuthering Heights,100,2024-08-30,test,2024-08-30,test
+8f9f7398-4466-4826-b7cf-c0b1354d2372,Jane Eyre,500,2024-08-30,test,2024-08-30,test

@@ -1,4 +1,4 @@
-using {my.bookshop as my} from './schema.cds';
+using {my.bookshop as my} from './schema';
 using {Attachments} from '@cap-js/sdm';
 
 extend my.Books with {
