@@ -1,0 +1,20 @@
+### Create Attachment
+POST http://localhost:4004/odata/v4/catalog/Books(8f9f7398-4466-4826-b7cf-c0b1354d2371)/attachments
+Accept: application/json;odata.metadata=minimal;IEEE754Compatible=true
+Accept-Language: en-US
+Content-Type: application/json;charset=UTF-8;IEEE754Compatible=true
+
+{
+  "filename": "10MB-TESTFILE.ORG.pdf",
+  "note": "automated request",
+  "mimeType": "application/pdf"
+}
+
+> {% client.global.set("up__ID", response.body.up__ID); client.global.set("ID", response.body.ID); %}
+
+### Update Attachment Content
+PUT http://localhost:4004/odata/v4/catalog/Books_attachments(up__ID={{up__ID}},ID={{ID}})/content
+Accept: application/json
+Content-Type: application/pdf
+
+< ./10MB-TESTFILE.ORG.pdf

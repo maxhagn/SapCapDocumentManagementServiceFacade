@@ -7,27 +7,28 @@
   "private": true,
   "dependencies": {
     "@cap-js/postgres": "^1.10.4",
-    "@sap-cloud-sdk/generator": "^3.22.2",
-    "@sap-cloud-sdk/http-client": "^3.22.2",
-    "@sap-cloud-sdk/resilience": "^3.22.2",
     "@cap-js/sdm": "^1.2.2",
+    "@sap-cloud-sdk/generator": "^3.23.0",
+    "@sap-cloud-sdk/http-client": "^3.23.0",
+    "@sap-cloud-sdk/resilience": "^3.23.0",
     "@sap/cds": "^8",
-    "express": "^4",
-    "@sap/xssec": "^4"
+    "@sap/xssec": "^4",
+    "passport": "^0",
+    "express": "^4"
   },
   "devDependencies": {
     "@cap-js/cds-types": "^0.7.0",
     "@cap-js/sqlite": "^1",
     "@sap/cds-dk": "^8",
+    "cds-swagger-ui-express": "^0.10.0",
     "prettier": "3.3.3",
-    "rimraf": "^5.0.10"
+    "rimraf": "^6.0.1"
   },
   "scripts": {
     "start": "cds run",
-    "start-ts": "cds-ts serve",
-    "debug-ts": "cds-ts watch",
-    "debug-in-memory": "cds-ts watch --with-mocks --in-memory",
-    "hybrid-in-memory": "cds-ts watch --with-mocks --in-memory --profile hybrid",
+    "debug": "cds watch",
+    "debug-in-memory": "cds watch --with-mocks --in-memory",
+    "hybrid-in-memory": "cds watch --with-mocks --profile hybrid",
     "watch-customizing": "cds watch --open customizing/webapp/index.html?sap-ui-xx-viewCache=false",
     "build": "npm run build:cf",
     "build:cf": "npm run build:cds && npm run cleanup:ts && npm run build:ts",
@@ -75,12 +76,33 @@
           "connectionTimeoutMillis": 2000
         }
       },
+      "auth": {
+        "[development]": {
+          "users": {
+            "alice": {
+              "roles": [
+                "support",
+                "admin"
+              ]
+            },
+            "bob": {
+              "roles": [
+                "support"
+              ]
+            }
+          }
+        },
+        "[hybrid]": "xsuaa",
+        "[production]": "xsuaa"
+      },
+      "[hybrid]": {
+        "auth": "xsuaa"
+      },
       "sdm": {
         "settings": {
-          "repositoryId": "1"
+          "repositoryId": "10"
         }
-      },
-      "auth": "xsuaa"
+      }
     }
   },
   "sapux": [
